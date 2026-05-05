@@ -1,6 +1,6 @@
 from datetime import datetime, timezone
 
-from flask import Flask, jsonify, request
+from flask import Flask, jsonify, redirect, request, send_from_directory
 from flask_cors import CORS
 
 app = Flask(__name__)
@@ -11,10 +11,12 @@ ITEMS = []
 
 @app.get("/")
 def home():
-    return jsonify({
-        "message": "SE202L DevOps Lab Project API",
-        "frontend": "/frontend/index.html",
-    }), 200
+    return redirect("/frontend/index.html")
+
+
+@app.get("/frontend/<path:filename>")
+def serve_frontend(filename):
+    return send_from_directory("frontend", filename)
 
 
 @app.get("/health")

@@ -44,3 +44,9 @@ def test_list_items_endpoint(client):
     body = response.get_json()
     assert body["count"] == 1
     assert len(body["items"]) == 1
+
+
+def test_frontend_index_served(client):
+    response = client.get("/frontend/index.html")
+    assert response.status_code == 200
+    assert "<!DOCTYPE html>" in response.get_data(as_text=True)
