@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>SE202L DevOps Project</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <main class="container">
+    <h1>SE202L DevOps Lab Project</h1>
+    <p>Simple frontend served for project requirement.</p>
+
+    <section>
+      <h2>Create Item (POST /api/items)</h2>
+      <form id="itemForm">
+        <input id="itemName" type="text" placeholder="Enter item name" required />
+        <button type="submit">Submit</button>
+      </form>
+      <pre id="output">Waiting for request...</pre>
+    </section>
+  </main>
+
+  <script>
+    const form = document.getElementById('itemForm');
+    const output = document.getElementById('output');
+
+    form.addEventListener('submit', async (event) => {
+      event.preventDefault();
+      const name = document.getElementById('itemName').value;
+
+      const response = await fetch('http://localhost:5000/api/items', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ name })
+      });
+
+      const data = await response.json();
+      output.textContent = JSON.stringify(data, null, 2);
+    });
+  </script>
+</body>
+</html>
