@@ -32,10 +32,10 @@ jobs:
         uses: actions/checkout@v4
 
       - name: Build Docker image
-        run: docker build -t se202l-app:ci .
+        run: docker build -t portfolio-generator:v1 .
 
       - name: Run container
-        run: docker run -d --name se202l-container -p 5000:5000 se202l-app:ci
+        run: docker run -d --name se202l-container -p 5000:5000 portfolio-generator:v1
 
       - name: Health check
         run: |
