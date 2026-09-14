@@ -26,8 +26,6 @@ python -m pytest test_app.py -v
 ```bash
 docker build -t se202l-app:v1 .
 docker run -d --name se202l-app -p 5000:5000 --restart=always se202l-app:v1
-```
-<img width="1280" height="552" alt="image" src="https://github.com/user-attachments/assets/50f11749-fca3-42b0-9d78-6339fc43921c" />
 <img width="1280" height="578" alt="image" src="https://github.com/user-attachments/assets/17114e73-21f6-4161-8ff5-bcf4d4fde1b6" />
 
 <img width="1280" height="483" alt="image" src="https://github.com/user-attachments/assets/c91b1bd3-57d5-46bd-846e-6704830a542b" />
